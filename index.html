@@ -5,14 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>おべんきょうクエスト</title>
     <style>
-        body {
+        /* 全体：1画面に収まるよう調整 */
+        html, body {
+            height: 100%;
             margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-            /* 背景：青空と草原 */
-            background: linear-gradient(to bottom, #87ceeb 0%, #87ceeb 40%, #7cfc00 40%, #228b22 100%);
-            background-attachment: fixed;
-            font-family: 'Helvetica Neue', Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+            overflow: hidden; /* スクロールを消して1画面に固定 */
+        }
+
+        body {
+            padding: 1vh 2vw;
+            box-sizing: border-box;
+            background: linear-gradient(to bottom, #87ceeb 0%, #87ceeb 45%, #7cfc00 45%, #228b22 100%);
+            font-family: 'Helvetica Neue', Arial, "Hiragino Kaku Gothic ProN", sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -21,39 +25,46 @@
         h1 {
             background: rgba(255, 255, 255, 0.9);
             color: #2c3e50;
-            padding: 15px 30px;
+            padding: 10px 30px;
             border-radius: 50px;
-            border: 4px solid #3498db;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            font-size: 1.4rem;
-            margin-bottom: 30px;
-            text-align: center;
+            border: 3px solid #3498db;
+            font-size: 1.5rem;
+            margin: 1vh 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
+        /* 3×4のグリッド設定 */
         .save-container {
-            width: 95%;
-            max-width: 500px;
+            flex-grow: 1; /* 余ったスペースを埋める */
             display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 横に4つ */
+            grid-template-rows: repeat(3, 1fr);    /* 縦に3つ */
             gap: 15px;
+            width: 100%;
+            max-width: 1200px;
+            padding-bottom: 2vh;
         }
 
+        /* ボタンのデザイン */
         .save-slot {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             text-decoration: none;
             color: #333;
             background: rgba(255, 255, 255, 0.95);
             border: 4px solid #f1c40f;
-            border-radius: 15px;
-            padding: 15px;
-            box-shadow: 0 6px 0 rgba(0,0,0,0.15);
+            border-radius: 12px;
+            padding: 10px;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.15);
             transition: all 0.2s ease;
         }
 
         .save-slot:hover {
-            transform: translateY(-4px);
+            transform: translateY(-3px);
             background: #fff;
             border-color: #ff4500;
-            box-shadow: 0 10px 0 rgba(0,0,0,0.15);
+            box-shadow: 0 6px 0 rgba(0,0,0,0.15);
         }
 
         .slot-info {
@@ -62,104 +73,121 @@
             font-weight: bold;
             color: #3498db;
             font-size: 0.7rem;
-            margin-bottom: 5px;
         }
 
         .slot-main {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            font-size: 1.1rem;
-            font-weight: bold;
+            text-align: center;
+            justify-content: center;
+            flex-grow: 1;
         }
 
         .icon {
-            font-size: 1.8rem;
-            margin-right: 12px;
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+        }
+
+        .title-text {
+            font-size: 1rem;
+            font-weight: bold;
+            line-height: 1.2;
         }
 
         .footer-text {
-            margin-top: 8px;
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             color: #27ae60;
             font-weight: bold;
+            text-align: center;
+            border-top: 1px solid #eee;
+            padding-top: 5px;
+            margin-top: 5px;
+        }
+
+        /* 小さな画面への対応 */
+        @media (max-height: 600px) {
+            .icon { font-size: 1.5rem; }
+            .title-text { font-size: 0.8rem; }
+            h1 { font-size: 1.2rem; padding: 5px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <h1>🏰 ぼうけんの しょ を えらぶ</h1>
+    <h1>🗺️ ぼうけんの マップ</h1>
 
     <div class="save-container">
 
         <a href="https://1360808-gif.github.io/Amari-no-aru-Warizan-10-/" class="save-slot">
-            <div class="slot-info"><span>DATA 01</span><span>Lv. 10</span></div>
-            <div class="slot-main"><span class="icon">➗</span> あまりのあるわり算</div>
+            <div class="slot-info"><span>DATA 01</span><span>Lv.10</span></div>
+            <div class="slot-main"><span class="icon">➗</span><span class="title-text">あまりのある<br>わり算</span></div>
             <div class="footer-text">しれん：あまりを みのがすな！</div>
         </a>
 
         <a href="https://1360808-gif.github.io/100masu-Kisan/" class="save-slot">
-            <div class="slot-info"><span>DATA 02</span><span>Lv. 12</span></div>
-            <div class="slot-main"><span class="icon">✖️</span> 百ますかけ算</div>
+            <div class="slot-info"><span>DATA 02</span><span>Lv.12</span></div>
+            <div class="slot-main"><span class="icon">✖️</span><span class="title-text">百ます<br>かけ算</span></div>
             <div class="footer-text">とくぎ：九九の れんぞくこうげき</div>
         </a>
 
         <a href="https://1360808-gif.github.io/100masu-Keisan-Tasizan-Gemini/" class="save-slot">
-            <div class="slot-info"><span>DATA 03</span><span>Lv. 08</span></div>
-            <div class="slot-main"><span class="icon">➕</span> 百ますたし算</div>
+            <div class="slot-info"><span>DATA 03</span><span>Lv.08</span></div>
+            <div class="slot-main"><span class="icon">➕</span><span class="title-text">百ます<br>たし算</span></div>
             <div class="footer-text">じゅもん：ハイスピード・計算</div>
         </a>
 
         <a href="https://1360808-gif.github.io/100masu-Keisan-Hikizan-Gemini/" class="save-slot">
-            <div class="slot-info"><span>DATA 04</span><span>Lv. 08</span></div>
-            <div class="slot-main"><span class="icon">➖</span> 百ますひき算</div>
+            <div class="slot-info"><span>DATA 04</span><span>Lv.08</span></div>
+            <div class="slot-main"><span class="icon">➖</span><span class="title-text">百ます<br>ひき算</span></div>
             <div class="footer-text">しれん：くりさがりに きをつけろ</div>
         </a>
 
         <a href="https://1360808-gif.github.io/100-Masu-Keisan-Warizan/" class="save-slot">
-            <div class="slot-info"><span>DATA 05</span><span>Lv. 09</span></div>
-            <div class="slot-main"><span class="icon">⚔️</span> 百マスわり算</div>
+            <div class="slot-info"><span>DATA 05</span><span>Lv.09</span></div>
+            <div class="slot-main"><span class="icon">⚔️</span><span class="title-text">百マス<br>わり算</span></div>
             <div class="footer-text">ステータス：わりきりマスター</div>
         </a>
 
         <a href="https://koitea265-blip.github.io/gaisuu/" class="save-slot">
-            <div class="slot-info"><span>DATA 06</span><span>Lv. 15</span></div>
-            <div class="slot-main"><span class="icon">🔍</span> がいすう探検隊</div>
+            <div class="slot-info"><span>DATA 06</span><span>Lv.15</span></div>
+            <div class="slot-main"><span class="icon">🔍</span><span class="title-text">がいすう<br>探検隊</span></div>
             <div class="footer-text">クエスト：およその かずを つかまえろ</div>
         </a>
 
         <a href="https://koitea265-blip.github.io/3nenpengin/" class="save-slot">
-            <div class="slot-info"><span>DATA 07</span><span>Lv. 11</span></div>
-            <div class="slot-main"><span class="icon">🐧</span> 3年足し算・引き算</div>
+            <div class="slot-info"><span>DATA 07</span><span>Lv.11</span></div>
+            <div class="slot-main"><span class="icon">🐧</span><span class="title-text">3年<br>足し算・引き算</span></div>
             <div class="footer-text">なかま：ペンギンと一緒に計算</div>
         </a>
 
         <a href="https://koitea265-blip.github.io/3syousu_bunsyodai/" class="save-slot">
-            <div class="slot-info"><span>DATA 08</span><span>Lv. 13</span></div>
-            <div class="slot-main"><span class="icon">💧</span> 小数の足し算文章題</div>
+            <div class="slot-info"><span>DATA 08</span><span>Lv.13</span></div>
+            <div class="slot-main"><span class="icon">💧</span><span class="title-text">小数の足し算<br>文章題</span></div>
             <div class="footer-text">じゅもん：ドットの まほう</div>
         </a>
 
         <a href="https://koitea265-blip.github.io/yakubunmaster/" class="save-slot">
-            <div class="slot-info"><span>DATA 09</span><span>Lv. 18</span></div>
-            <div class="slot-main"><span class="icon">💎</span> 約分マスター</div>
+            <div class="slot-info"><span>DATA 09</span><span>Lv.18</span></div>
+            <div class="slot-main"><span class="icon">💎</span><span class="title-text">約分<br>マスター</span></div>
             <div class="footer-text">とくぎ：かずを ちいさく まとめる</div>
         </a>
 
         <a href="https://koitea265-blip.github.io/tanikansan/" class="save-slot">
-            <div class="slot-info"><span>DATA 10</span><span>Lv. 14</span></div>
-            <div class="slot-main"><span class="icon">📏</span> 単位マスター</div>
+            <div class="slot-info"><span>DATA 10</span><span>Lv.14</span></div>
+            <div class="slot-main"><span class="icon">📏</span><span class="title-text">単位<br>マスター</span></div>
             <div class="footer-text">ステータス：長さと重さの達人</div>
         </a>
 
         <a href="https://koitea265-blip.github.io/yojijyukugo/" class="save-slot">
-            <div class="slot-info"><span>DATA 11</span><span>Lv. 20</span></div>
-            <div class="slot-main"><span class="icon">📜</span> 四字熟語</div>
+            <div class="slot-info"><span>DATA 11</span><span>Lv.20</span></div>
+            <div class="slot-main"><span class="icon">📜</span><span class="title-text">四字熟語</span></div>
             <div class="footer-text">じゅもん：漢字四文字の ちから</div>
         </a>
 
         <a href="https://koitea265-blip.github.io/nawatobicard/" class="save-slot">
-            <div class="slot-info"><span>DATA 12</span><span>Lv. 25</span></div>
-            <div class="slot-main"><span class="icon">➰</span> 縄跳びカード</div>
+            <div class="slot-info"><span>DATA 12</span><span>Lv.25</span></div>
+            <div class="slot-main"><span class="icon">➰</span><span class="title-text">縄跳び<br>カード</span></div>
             <div class="footer-text">ステータス：ジャンプの達人</div>
         </a>
 
