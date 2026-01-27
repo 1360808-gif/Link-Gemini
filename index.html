@@ -3,125 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>おべんきょうクエスト - セーブデータ</title>
+    <title>おべんきょうクエスト</title>
     <style>
-        /* RPG風のフォントと背景 */
+        /* 明るいファンタジー風の背景 */
         body {
-            background-color: #000;
-            color: #fff;
-            font-family: 'Courier New', Courier, monospace;
+            background-color: #e0f7fa; /* さわやかな水色 */
+            background-image: radial-gradient(#ffffff 15%, transparent 20%);
+            background-size: 20px 20px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 20px;
+            margin: 0;
         }
 
         h1 {
-            border: 4px double #fff;
-            padding: 10px 20px;
-            background: #00008b; /* ダークブルーのウィンドウ風 */
+            color: #2c3e50;
+            background: #fff;
+            border: 4px solid #3498db;
+            border-radius: 50px;
+            padding: 10px 40px;
+            box-shadow: 0 4px 0 #2980b9;
+            font-size: 1.2rem;
             margin-bottom: 30px;
-            font-size: 1.5rem;
         }
 
         .save-container {
-            width: 100%;
-            max-width: 500px;
+            width: 90%;
+            max-width: 450px;
         }
 
-        /* セーブスロット風のボタン */
+        /* 明るいセーブスロット */
         .save-slot {
             display: block;
             text-decoration: none;
-            color: #fff;
-            background: #000;
-            border: 3px solid #fff;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
+            color: #333;
+            background: #fff;
+            border: 3px solid #3498db;
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 6px 0 #bdc3c7;
             transition: all 0.2s;
-            position: relative;
-            overflow: hidden;
         }
 
         .save-slot:hover {
-            background: #222;
-            border-color: #ffff00; /* 選択時に黄色く光る */
-            transform: scale(1.02);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 0 #3498db;
+            background: #f0faff;
         }
 
         .slot-header {
-            font-size: 0.8rem;
-            color: #aaa;
-            margin-bottom: 10px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: #3498db;
             display: flex;
             justify-content: space-between;
+            margin-bottom: 5px;
         }
 
         .slot-title {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: bold;
             display: flex;
             align-items: center;
         }
 
-        .slot-title span {
-            margin-right: 15px;
-            font-size: 2rem;
+        .slot-title .icon {
+            font-size: 1.8rem;
+            margin-right: 12px;
         }
 
         .slot-footer {
-            margin-top: 10px;
-            font-size: 0.9rem;
-            color: #00ff00; /* 経験値やレベルっぽく */
+            margin-top: 8px;
+            font-size: 0.8rem;
+            background: #ecf0f1;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #7f8c8d;
         }
 
-        /* 矢印（カーソル） */
-        .save-slot:hover::before {
-            content: "▶";
-            position: absolute;
-            left: 5px;
-            top: 40%;
-            color: #ffff00;
+        .level-badge {
+            background: #f1c40f;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
         }
     </style>
 </head>
 <body>
 
-    <h1>ぼうけんの しょ を えらんでください</h1>
+    <h1>✨ ぼうけんの しょ を えらぶ ✨</h1>
 
     <div class="save-container">
-        <a href="https://URL-HERE-1" class="save-slot">
+        <a href="ここにURLを貼る" class="save-slot">
             <div class="slot-header">
                 <span>DATA 01</span>
-                <span>Lv. 10</span>
+                <span class="level-badge">Lv. 12</span>
             </div>
             <div class="slot-title">
-                <span>🔢</span> ひゃくます計算
+                <span class="icon">⚔️</span> ひゃくます計算
             </div>
-            <div class="slot-footer">STATUS: たしざん・ひきざん</div>
+            <div class="slot-footer">つぎの ステージ： 3けた の たしざん</div>
         </a>
 
-        <a href="https://URL-HERE-2" class="save-slot">
+        <a href="ここにURLを貼る" class="save-slot">
             <div class="slot-header">
                 <span>DATA 02</span>
-                <span>Lv. 08</span>
+                <span class="level-badge">Lv. 07</span>
             </div>
             <div class="slot-title">
-                <span>✍️</span> かんじ練習
+                <span class="icon">📜</span> かんじ練習
             </div>
-            <div class="slot-footer">STATUS: 2ねんせいの かんじ</div>
-        </a>
-
-        <a href="https://URL-HERE-3" class="save-slot">
-            <div class="slot-header">
-                <span>DATA 03</span>
-                <span>Lv. 05</span>
-            </div>
-            <div class="slot-title">
-                <span>📖</span> おんどく
-            </div>
-            <div class="slot-footer">STATUS: こころを こめて</div>
+            <div class="slot-footer">とくぎ： とめ・はね・はらい</div>
         </a>
     </div>
 
