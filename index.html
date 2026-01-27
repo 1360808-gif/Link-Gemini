@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>おべんきょうクエスト - セーブデータ</title>
+    <style>
+        /* RPG風のフォントと背景 */
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            border: 4px double #fff;
+            padding: 10px 20px;
+            background: #00008b; /* ダークブルーのウィンドウ風 */
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+        }
+
+        .save-container {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        /* セーブスロット風のボタン */
+        .save-slot {
+            display: block;
+            text-decoration: none;
+            color: #fff;
+            background: #000;
+            border: 3px solid #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .save-slot:hover {
+            background: #222;
+            border-color: #ffff00; /* 選択時に黄色く光る */
+            transform: scale(1.02);
+        }
+
+        .slot-header {
+            font-size: 0.8rem;
+            color: #aaa;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .slot-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .slot-title span {
+            margin-right: 15px;
+            font-size: 2rem;
+        }
+
+        .slot-footer {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #00ff00; /* 経験値やレベルっぽく */
+        }
+
+        /* 矢印（カーソル） */
+        .save-slot:hover::before {
+            content: "▶";
+            position: absolute;
+            left: 5px;
+            top: 40%;
+            color: #ffff00;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>ぼうけんの しょ を えらんでください</h1>
+
+    <div class="save-container">
+        <a href="https://URL-HERE-1" class="save-slot">
+            <div class="slot-header">
+                <span>DATA 01</span>
+                <span>Lv. 10</span>
+            </div>
+            <div class="slot-title">
+                <span>🔢</span> ひゃくます計算
+            </div>
+            <div class="slot-footer">STATUS: たしざん・ひきざん</div>
+        </a>
+
+        <a href="https://URL-HERE-2" class="save-slot">
+            <div class="slot-header">
+                <span>DATA 02</span>
+                <span>Lv. 08</span>
+            </div>
+            <div class="slot-title">
+                <span>✍️</span> かんじ練習
+            </div>
+            <div class="slot-footer">STATUS: 2ねんせいの かんじ</div>
+        </a>
+
+        <a href="https://URL-HERE-3" class="save-slot">
+            <div class="slot-header">
+                <span>DATA 03</span>
+                <span>Lv. 05</span>
+            </div>
+            <div class="slot-title">
+                <span>📖</span> おんどく
+            </div>
+            <div class="slot-footer">STATUS: こころを こめて</div>
+        </a>
+    </div>
+
+</body>
+</html>
