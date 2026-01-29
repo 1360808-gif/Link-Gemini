@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>おべんきょうクエスト - ワールドマップ</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            /* スクロールできるように修正 */
+            overflow-y: auto; 
+        }
+
+        body {
+            padding: 2vh 2vw;
+            box-sizing: border-box;
+            /* 既存の世界観（空と地面）を継承 */
+            background: linear-gradient(to bottom, #87ceeb 0%, #87ceeb 50%, #7cfc00 50%, #228b22 100%);
+            font-family: 'Helvetica Neue', Arial, "Hiragino Kaku Gothic ProN", sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            background: rgba(255, 255, 255, 0.95);
+            color: #2c3e50;
+            padding: 15px 40px;
+            border-radius: 50px;
+            border: 4px solid #e74c3c; /* タイトル枠を赤に変更して特別感を出す */
+            font-size: 1.8rem;
+            margin: 2vh 0 4vh 0;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .world-map {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+            padding-bottom: 50px;
+        }
+
+        /* エリア選択ボタン（教科ごとの入り口） */
+        .area-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            width: 45%; /* スマホだと2列、PCだと調整 */
+            max-width: 250px;
+            aspect-ratio: 1 / 1; /* 正方形にする */
+            background: rgba(255, 255, 255, 0.95);
+            border: 5px solid #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 0 rgba(0,0,0,0.15);
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* ぷるんと動く */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 教科ごとの色分け */
+        .area-card.math { border-color: #3498db; }   /* 算数は青 */
+        .area-card.jp { border-color: #e67e22; }     /* 国語はオレンジ */
+        .area-card.science { border-color: #2ecc71; } /* 理科は緑 */
+        .area-card.other { border-color: #9b59b6; }  /* その他は紫 */
+
+        .area-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: #fff;
+            box-shadow: 0 12px 0 rgba(0,0,0,0.15);
+        }
+
+        .area-icon {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+        }
+
+        .area-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+
+        .area-desc {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        /* 吹き出し風の装飾 */
+        .message-box {
+            background: #fff;
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            position: relative;
+            box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+        }
+        .message-box::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+        .message-text {
+            font-weight: bold;
+            color: #333;
+        }
+
+        @media (max-width: 600px) {
+            .area-card {
+                width: 90%; /* スマホなら1列にする */
+                max-width: none;
+                aspect-ratio: auto;
+                padding: 20px;
+                flex-direction: row; /* スマホなら横長レイアウトに */
+                justify-content: flex-start;
+                gap: 20px;
+            }
+            .area-icon { font-size: 2.5rem; margin-bottom: 0; }
+            .area-title { font-size: 1.2rem; }
+            h1 { font-size: 1.4rem; padding: 10px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="message-box">
+        <div class="message-text">👑 王様： 「今日は どこへ ぼうけんに 出かけるのじゃ？」</div>
+    </div>
+
+    <h1>🗺️ ぼうけんの せかい</h1>
+
+    <div class="world-map">
+
+        <a href="math.html" class="area-card math">
+            <div class="area-icon">⚔️</div>
+            <div>
+                <div class="area-title">算数の森</div>
+                <div class="area-desc">Lv.1〜Lv.50</div>
+            </div>
+        </a>
+
+        <a href="japanese.html" class="area-card jp">
+            <div class="area-icon">📜</div>
+            <div>
+                <div class="area-title">国語の城</div>
+                <div class="area-desc">Lv.1〜Lv.50</div>
+            </div>
+        </a>
+
+        <a href="science.html" class="area-card science">
+            <div class="area-icon">⚗️</div>
+            <div>
+                <div class="area-title">理科の塔</div>
+                <div class="area-desc">Lv.10〜Lv.40</div>
+            </div>
+        </a>
+
+        <a href="tools.html" class="area-card other">
+            <div class="area-icon">🎒</div>
+            <div>
+                <div class="area-title">どうぐ屋</div>
+                <div class="area-desc">その他・便利ツール</div>
+            </div>
+        </a>
+
+    </div>
+
+</body>
+</html>
